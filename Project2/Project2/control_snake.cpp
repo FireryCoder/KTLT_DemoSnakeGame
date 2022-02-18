@@ -121,7 +121,7 @@ void Create_newSnake() {
 		Sleep(500);
 	}
 }
-void Create_Snake()
+void Create_Snakeindex()
 {
 	int MSSV1[4][8] = { {2,1,1,2,7,6,3,4},
 						{2,1,1,2,7,0,7,8},
@@ -198,4 +198,98 @@ void DrawFood()
 void eat()
 {
 	size_snake++;
+}
+
+bool checkgate(POINT a)
+{
+	for (int i = 0; i < size_snake_max; i++)
+	{
+		if (a.x == Snake[i].x && a.y == Snake[i].y)
+		{
+			return false;
+		}
+	}
+	if (a.x == food.x && a.y == food.y)
+	{
+		return false;
+	}
+	return true;
+}
+
+void Create_Gate()
+{
+	srand(time(NULL));
+	for (int i = 0; i < 1; i++) {
+		gate_index[0].x = rand() % (85 - 40 + 1) + 40;
+		gate_index[0].y = rand() % (14 - 6 + 1) + 6;
+		if (checkgate(gate_index[0]) == false)
+		{
+			i--;
+			break;
+		}
+
+		gate_index[1].x = gate_index[0].x + 1;
+		gate_index[1].y = gate_index[0].y;
+		//GotoXY(gate_index[1].X, gate_index[1].Y);
+		//printf("#");
+		if (checkgate(gate_index[1]) == false)
+		{
+			i--;
+			break;
+		}
+
+		gate_index[2].x = gate_index[0].x + 1;
+		gate_index[2].y = gate_index[0].y + 1;
+		//GotoXY(gate_index[2].X, gate_index[2].Y);
+		//printf("#");
+		if (checkgate(gate_index[2]) == false)
+		{
+			i--;
+			break;
+		}
+
+		gate_index[3].x = gate_index[0].x - 1;
+		gate_index[3].y = gate_index[0].y + 1;
+		//GotoXY(gate_index[3].X, gate_index[3].Y);
+		//printf("#");
+		if (checkgate(gate_index[3]) == false)
+		{
+			i--;
+			break;
+		}
+
+		gate_index[4].x = gate_index[0].x - 1;
+		gate_index[4].y = gate_index[0].y;
+		//GotoXY(gate_index[0].X - 1, gate_index[0].Y);
+		//printf("#");
+		if (checkgate(gate_index[4]) == false)
+		{
+			i--;
+			break;
+		}
+	}
+}
+void eat( int &point )
+{
+	point += 10;
+	size_snake++;
+	Snake[size_snake - 1] = food;
+}
+
+void changelevel()
+{
+	for (int j = size_snake; j >= 0 ; j--)
+	{
+		GotoXY(Snake[j].x, Snake[j].y);
+		cout << " ";
+		Sleep(100);
+	}
+}
+void DrawGate()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		GotoXY(gate_index[i].x, gate_index[i].y);
+		cout << "G";
+	}
 }

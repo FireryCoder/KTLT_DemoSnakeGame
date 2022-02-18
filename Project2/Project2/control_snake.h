@@ -8,8 +8,9 @@
 #define width_wall 90
 #define height_wall 20
 extern int size_snake;
-extern int snake_index[size_snake_max];
 extern int state;
+extern int snake_index[size_snake_max];
+extern POINT gate_index[5];
 extern POINT Snake[size_snake_max];
 extern POINT Old_Snake[size_snake_max];
 extern POINT food;
@@ -27,11 +28,14 @@ void DrawSnake();
 void DrawFood();
 void DrawGate();
 
+bool checkgate(POINT a);
+
 void Create_newSnake();
-void Create_Snake();
+void Create_Snakeindex();
 void Create_food();
 void Create_Gate();
 
 void Delete_Old_Snake();
 void Save_Snake();
-void eat();
+void eat(int& point);
+void changelevel();
