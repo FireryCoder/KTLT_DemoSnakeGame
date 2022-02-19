@@ -1,0 +1,5 @@
+﻿  control_snake.cpp
+C:\Users\Admin\Desktop\Project2\Project2\control_snake.cpp(87,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Admin\Desktop\Project2\Project2\control_snake.cpp(178,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Admin\Desktop\Project2\Project2\control_snake.cpp(229,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Project2.vcxproj -> C:\Users\Admin\Desktop\Project2\x64\Debug\Project2.exe
